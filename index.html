@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1>Event Scheduler</h1>
+    <form method="POST" action="/">
+        {{ form.hidden_tag() }}
+        <p>
+            {{ form.title.label }}<br>
+            {{ form.title(size=32) }}
+        </p>
+        <p>
+            {{ form.description.label }}<br>
+            {{ form.description(cols=32, rows=4) }}
+        </p>
+        <p>
+            {{ form.date.label }}<br>
+            {{ form.date(size=32) }}
+        </p>
+        <p>
+            {{ form.email.label }}<br>
+            {{ form.email(size=32) }}
+        </p>
+        <p>
+            {{ form.phone_number.label }}<br>
+            {{ form.phone_number(size=32) }}
+        </p>
+        <p>{{ form.submit() }}</p>
+    </form>
+    <h2>Upcoming Events</h2>
+    <ul>
+        {% for event in events %}
+            <li>{{ event.title }} - {{ event.date }} - {{ event.email }} - {{ event.phone_number }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
